@@ -19,7 +19,6 @@ addons:
       - libsdl2-ttf-dev
       - libsdl2-gfx-dev
   homebrew:
-    update: true
     packages:
       - git-lfs
       - sdl2
