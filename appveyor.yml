@@ -11,20 +11,15 @@ cache:
   - C:\Users\appveyor\.cargo\registry
   - target
 
+image: Visual Studio 2017
+
 environment:
   global:
     RUST_VERSION: stable
     RUST_TEST_THREADS: 1
-
     CRATE_NAME: ganger_engine
 
   matrix:
-    # MinGW
-    - TARGET: i686-pc-windows-gnu
-      PLATFORM: x86
-    - TARGET: x86_64-pc-windows-gnu
-      PLATFORM: x64
-
     # MSVC
     - TARGET: i686-pc-windows-msvc
       PLATFORM: x86
@@ -32,9 +27,6 @@ environment:
       PLATFORM: x64
 
     # Testing other channels
-    - TARGET: x86_64-pc-windows-gnu
-      RUST_VERSION: nightly
-      PLATFORM: x64
     - TARGET: x86_64-pc-windows-msvc
       RUST_VERSION: nightly
       PLATFORM: x64
