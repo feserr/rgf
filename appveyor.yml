@@ -53,6 +53,9 @@ install:
   - cargo -V
 
 test_script:
+  - SET PATH=%PATH%;C:\Tools\vcpkg\installed\%PLATFORM%-windows\bin
+  - SET INCLUDE=%INCLUDE%;C:\Tools\vcpkg\installed\%PLATFORM%-windows\include
+  - SET LIB=%LIB%;C:\Tools\vcpkg\installed\%PLATFORM%-windows\lib
   - if [%APPVEYOR_REPO_TAG%]==[false] (
       cargo build --target %TARGET% &&
       cargo build --target %TARGET% --release &&
