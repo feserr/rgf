@@ -35,21 +35,25 @@ env:
 matrix:
   include:
     # Linux
-    - env: TARGET=x86_64-unknown-linux-gnu
+    - os: linux
       name: Linux x86_64 gnu
+      env: TARGET=x86_64-unknown-linux-gnu
 
     # OSX
-    - env: TARGET=x86_64-apple-darwin
-      os: osx
+    - os: osx
       name: OSX x86_64
+      osx_image: xcode11.2
+      env: TARGET=x86_64-apple-darwin
 
     # Testing other channels
-    - env: TARGET=x86_64-unknown-linux-gnu
+    - os: linux
       name: Linux x86_64 gnu Nightly
+      env: TARGET=x86_64-unknown-linux-gnu
       rust: nightly
-    - env: TARGET=x86_64-apple-darwin
+    - os: osx
       name: OSX x86_64 Nightly
-      os: osx
+      osx_image: xcode11.2
+      env: TARGET=x86_64-apple-darwin
       rust: nightly
 
 before_install:
