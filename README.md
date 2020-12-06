@@ -1,35 +1,30 @@
-# rgf
+# Ganger Engine
 
-[![Twitter URL](https://img.shields.io/badge/tweet-feserr-blue.svg?longCache=true&style=for-the-badge)](https://twitter.com/feserr_)
-[![GitHub issue last update](https://img.shields.io/badge/updated-january%202020-red.svg?longCache=true&style=for-the-badge)](https://github.com/feserr/rgf)
+[![License](https://img.shields.io/badge/license-BSD--2%20clause-blue.svg)](https://github.com/feserr/ganger_engine#license)
 
-- Linux and OSX [![Build Status](https://travis-ci.org/feserr/rgf.svg?branch=master)](https://travis-ci.org/feserr/rgf)
+[![Build Status](https://travis-ci.org/feserr/ganger_engine.svg?branch=master)](https://travis-ci.org/feserr/ganger_engine)
+[![Build status](https://ci.appveyor.com/api/projects/status/envc3qwxrpfsyv3l?svg=true)](https://ci.appveyor.com/project/feserr/ganger-engine)
+
+[![Trello URL](https://img.shields.io/badge/trello-gangerengine-green.svg?longCache=true&style=for-the-badge)](https://trello.com/b/8oCsfn0j)
 
 ## Index
 
 - [About](#about)
-- [What's New?](#whats-new)
 - [How to Build](#how-to-build)
 - [Requirements](#requirements)
 - [Dependencies](#dependencies)
-- [Demos](#demos)
-- [Future features](#future)
+- [Examples](#examples)
 - [Contributing](#contributing)
 - [Bugs?](#bugs)
 - [Honorable mentions?](#mentions)
 - [License](#license)
 
 <a name="about"></a>
-## RGF 0.1.0
+## Ganger Engine 0.1.0
 
-RGF is an open source Rust cross-platform game framework.
+Ganger Engine is an open source Rust cross-platform game framework.
 
-Version: 0.1.0 - Released: 11rd February 2020
-
-<a name="whats-new"></a>
-## What's new in 0.1.0?
-
-* Travis CI.
+Version: 0.1.0 - Released: 6th December 2020
 
 <a name="how-to-build"></a>
 ## How to Build
@@ -46,29 +41,22 @@ Coming soon...
 
 Coming soon...
 
-<a name="demos"></a>
-## Demos
+<a name="examples"></a>
+## Examples
 
 * Hello triangle.
-
-<a name="future"></a>
-## Future features
-
-* Appveyor for Windows CI.
 
 <a name="contributing"></a>
 ## Contributing
 
 - If you find a bug then please report it on [GitHub Issues][issues].
 
-- If you have a feature request, or have written a game or demo that shows rgf in use, then please get in touch. We'd love to hear from you!
-
-- If you issue a Pull Request for rgf, please only do so against the `dev` branch and **not** against the `master` branch.
+- If you have a feature request, or have written a game or demo that shows Ganger Engine in use, then please get in touch. We'd love to hear from you!
 
 <a name="bugs"></a>
 ## Bugs?
 
-Please add them to the [Issue Tracker][issues] with as much info as possible, especially source code demonstrating the issue.
+Please add them to the [Issue Tracker][issues] with as much info as possible, especially source code demonstrating the issue and steps to reproduce.
 
 <a name="mentions"></a>
 ## Honorable mentions
@@ -86,7 +74,7 @@ Please add them to the [Issue Tracker][issues] with as much info as possible, es
 
 	BSD 2-Clause License
 
-	Copyright (c) 2019, Elias Serrano
+	Copyright (c) 2020, Elias Serrano
 	All rights reserved.
 
 	Redistribution and use in source and binary forms, with or without
@@ -110,4 +98,4 @@ Please add them to the [Issue Tracker][issues] with as much info as possible, es
 	OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 	OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-[issues]: https://github.com/feserr/rgf/issues
+[issues]: https://github.com/feserr/ganger-engine/issues
