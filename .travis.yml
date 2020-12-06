@@ -1,0 +1,92 @@
+# Based on the "trust" template v0.1.2
+# https://github.com/japaric/trust/tree/v0.1.2
+
+dist: xenial
+language: rust
+services:
+  - xvfb
+sudo: required
+
+addons:
+  apt:
+    packages:
+      - valgrind
+      - libgl1-mesa-glx
+      - libgl1-mesa-dev
+      - libsdl2-dev
+      - libsdl2-image-dev
+      - libsdl2-mixer-dev
+      - libsdl2-ttf-dev
+      - libsdl2-gfx-dev
+  homebrew:
+    update: true
+    packages:
+      - git-lfs
+      - sdl2
+      - sdl2_image
+      - sdl2_mixer
+      - sdl2_ttf
+      - sdl2_gfx
+
+env:
+  global:
+    - CRATE_NAME=ganger_engine
+    - RUST_TEST_THREADS=1
+
+matrix:
+  include:
+    # Linux
+    - env: TARGET=x86_64-unknown-linux-gnu
+      name: Linux x86_64 gnu
+
+    # OSX
+    - env: TARGET=x86_64-apple-darwin
+      os: osx
+      name: OSX x86_64
+
+    # Testing other channels
+    - env: TARGET=x86_64-unknown-linux-gnu
+      name: Linux x86_64 gnu Nightly
+      rust: nightly
+    - env: TARGET=x86_64-apple-darwin
+      name: OSX x86_64 Nightly
+      os: osx
+      rust: nightly
+
+before_install:
+  - set -e
+  - rustup self update
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then export LIBRARY_PATH="$LIBRARY_PATH:/usr/local/lib"; fi
+
+install:
+  - sh ci/install.sh
+  - source ~/.cargo/env || true
+
+script:
+  - sh ci/script.sh
+
+after_script: set +e
+
+before_deploy:
+  - sh ci/before_deploy.sh
+
+deploy:
+  api_key:
+    secure: AyyCF6Y4L790DLduU5GbZY/0/IUETt8LrTw46rAf8HwbnO7242kv5sm1bFVCiZoY7MkjwPaF468agsn46AtGMVdFFdkQliLia7qdT/9hTXYLBtSbWq45Nf2gQV91RCnnL+QpiXVy/fadeqJ6PFxc7nreJDwkJOKymMLwDdb2pbD6eI0thhGBshLPLuWRcYkNvz/cpI7J3UrXoIMOtf2V36C2yfRjA6h5NoLKyoqCU9cKz0ETvLazEHmeXFBK5BnD6lVPQJSC0hlp+b72MUFnQD5S6mI9V9X13BxX8YWaC6tTe/Hf+nnrKytZhhrIM1TnVpg+tT13x3VS2DOdm62Y8Wl20NJsI70gHnn0JWguQVKQtUhsi49a5+I4DMpzJ219YmovkbdUuitNGccHvJX0isJKvWPQw9QpOLy3WGdgMh+b/jsOkw/xl2gY7IZzuYTux+veqUZkGGWGos4RWQvrF+tv7PwCLqBU4/PWW1ySSV8YDFNCVdc7KzQ9DZR6Recy1sR0a/BsBVARgg64ii4t2eoPnh14Tb/lQ6GA5mKxnG3dh/vL4R1XYzC5kYf2Lmzj0T+6840kxYBNwolV7G/qtwmdoHhvyXLMKBsDSXHYCTrZWjQW4Xsk9tV7HEjTV3XBcp4SXyB03AIL+Jr0sRi4mJqNkVwq5qsW+EiIv5rgL74
+  file_glob: true
+  file: $CRATE_NAME-$TRAVIS_TAG-$TARGET.*
+  on:
+    condition: $TRAVIS_RUST_VERSION = stable
+    tags: true
+  provider: releases
+
+cache: cargo
+before_cache:
+  - chmod -R a+r $HOME/.cargo
+
+branches:
+  only:
+    # release tags
+    - /^v\d+\.\d+\.\d+.*$/
+    - master
+    - dev
