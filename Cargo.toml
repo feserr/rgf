@@ -1,0 +1,18 @@
+[package]
+name = 'ganger_engine'
+version = '0.1.0'
+authors = ['Elias Serrano <feserr3@gmail.com>']
+edition = '2018'
+doc = true
+doctest = true
+test = true
+
+[dependencies.sdl2]
+git = 'https://github.com/AngryLawyer/rust-sdl2'
+default-features = false
+features = [
+    'ttf',
+    'image',
+    'gfx',
+    'mixer',
+]
