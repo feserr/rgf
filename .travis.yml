@@ -38,6 +38,9 @@ matrix:
     - os: linux
       name: Linux x86_64 gnu
       env: TARGET=x86_64-unknown-linux-gnu
+    - os: linux
+      name: Linux ARM
+      env: TARGET=aarch64-unknown-linux-gnu
 
     # OSX
     - os: osx
