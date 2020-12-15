@@ -43,6 +43,7 @@ matrix:
       arch: arm64
       name: Linux ARM
       env: TARGET=aarch64-unknown-linux-gnu
+      DISABLE_TESTS: 1
 
     # OSX
     - os: osx
