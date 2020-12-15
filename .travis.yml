@@ -36,9 +36,11 @@ matrix:
   include:
     # Linux
     - os: linux
+      arch: amd64
       name: Linux x86_64 gnu
       env: TARGET=x86_64-unknown-linux-gnu
     - os: linux
+      arch: arm64
       name: Linux ARM
       env: TARGET=aarch64-unknown-linux-gnu
 
@@ -50,6 +52,7 @@ matrix:
 
     # Testing other channels
     - os: linux
+      arch: amd64
       name: Linux x86_64 gnu Nightly
       env: TARGET=x86_64-unknown-linux-gnu
       rust: nightly
