@@ -63,10 +63,7 @@ matrix:
       rust: nightly
 
 before_install:
-  - set -e
-  - rustup self update
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then export LIBRARY_PATH="$LIBRARY_PATH:/usr/local/lib"; fi
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then export DISPLAY=':99.0'; Xvfb :99 -screen 0 800x600x24 > /dev/null 2>&1 &; fi
+  - sh ci/before_install.sh
 
 install:
   - sh ci/install.sh
