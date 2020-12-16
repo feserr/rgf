@@ -10,6 +10,7 @@ sudo: required
 addons:
   apt:
     packages:
+      - xvfb
       - valgrind
       - libgl1-mesa-glx
       - libgl1-mesa-dev
@@ -36,8 +37,13 @@ matrix:
   include:
     # Linux
     - os: linux
+      arch: amd64
       name: Linux x86_64 gnu
       env: TARGET=x86_64-unknown-linux-gnu
+    - os: linux
+      arch: arm64
+      name: Linux ARM
+      env: TARGET=aarch64-unknown-linux-gnu
 
     # OSX
     - os: osx
@@ -47,6 +53,7 @@ matrix:
 
     # Testing other channels
     - os: linux
+      arch: amd64
       name: Linux x86_64 gnu Nightly
       env: TARGET=x86_64-unknown-linux-gnu
       rust: nightly
@@ -57,9 +64,7 @@ matrix:
       rust: nightly
 
 before_install:
-  - set -e
-  - rustup self update
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then export LIBRARY_PATH="$LIBRARY_PATH:/usr/local/lib"; fi
+  - sh ci/before_install.sh
 
 install:
   - sh ci/install.sh
